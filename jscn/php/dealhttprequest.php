@@ -52,7 +52,7 @@ function getPara()
    if("" != $pushTokenSys){
     $isFindPushid  = 1;
     // $ret = pushv2($SySpushid1,$appidSys,$activeId);
-    $ret = touchPush($activeId,$appidSys8,$pushTokenSys);
+    $ret = touchPush($activeId,$appidSys8,$pushTokenSys,$devid);
     if($ret == 200) {
       $isPushIdExsit = 1;
     }
@@ -83,7 +83,7 @@ function getPara()
   if("" != $pushTokenTv){
     $isFindPushid  = 1;
     // $ret = pushv2($SySpushid1,$appidSys,$activeId);
-    $ret = touchPush($activeId,$appidTv,$pushTokenTv);
+    $ret = touchPush($activeId,$appidTv,$pushTokenTv,$devid);
     if($ret == 200) {
       $isPushIdExsit = 1;
     }
@@ -316,9 +316,9 @@ function pushv2($id,$appid){
 
 }
 
-function touchPush($id,$appid,$token){
+function touchPush($id,$appid,$token,$devid){
   $appid = $appid;
-  $url = "http://api.touch.push.jscnnet.com/message/pushMsg?channelType=tv&targetId=".$id ."&msg=connect&ttl=120&appId=".$appid."&token=".$token."&targetType=7";
+  $url = "http://api.touch.push.jscnnet.com/message/pushMsg?channelType=tv&devId=".$devid."targetId=".$id ."&msg=connect&ttl=120&appId=".$appid."&token=".$token."&targetType=7";
   $result =  httpRequest($url);
   getMsgApi($id,$result);
   $datajson =json_decode($result);
