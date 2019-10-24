@@ -321,7 +321,7 @@ function pushv2($id,$appid){
 
 function touchPush($id,$appid,$token,$devid){
   $appid = $appid;
-  $url = "http://api.touch.push.skysrt.com/message/pushMsg?channelType=tv&devId=".$devid."targetId=".$id ."&msg=connect&ttl=120&appId=".$appid."&token=".$token."&targetType=7";
+  $url = "http://api.touch.push.skysrt.com/message/pushMsg?channelType=tv&targetId=".$id ."&msg=connect&ttl=120&appId=".$appid."&token=".$token."&targetType=7";
   $result =  httpRequest($url);
   getMsgApi($id,$result);
   $datajson =json_decode($result);
